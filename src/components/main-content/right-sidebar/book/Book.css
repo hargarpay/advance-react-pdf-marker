@@ -1,0 +1,36 @@
+.book{
+    display: flex;
+    width: calc(100% - 30px);
+    min-height: 100px;
+    background-color: rgb(241, 241, 241);
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid rgb(0, 153, 255);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.book .book-icon{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.book .book-icon span{
+    font-size: 45px;
+}
+
+.book .book-info{
+    flex: 3;
+}
+
+
+.book h3{
+    margin: 2px 0;
+    font-size: 17px;
+}
+
+.book small{
+    font-size: 12px;
+}

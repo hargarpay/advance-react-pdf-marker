@@ -1,0 +1,54 @@
+.list-item{
+    margin: 10px;
+    min-height: 100px;
+    background-color: #ffffff;
+    border: 1px solid rgb(0, 153, 255);
+    color: #ffffff;
+    position:relative;
+}
+
+.action-buttons{
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    padding: 5px 10px;
+    background-color: rgb(199, 199, 199);
+    border-top: 1px solid rgb(0, 153, 255);
+    border-left: 1px solid rgb(0, 153, 255);
+}
+
+.btn{
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;  
+    padding: 5px;
+    border: 0px;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-warning{
+    background-color: rgb(255, 196, 0);
+    color: #000000;
+}
+
+.btn-info{
+    background-color: rgb(0, 174, 255);
+    color: #ffffff;
+}
+
+.btn-danger{
+    background-color: rgb(245, 49, 49);
+    color: #ffffff;
+}
+
+
+button:hover,
+button:focus,
+button:active{
+    outline: none;
+}
+

@@ -1,0 +1,18 @@
+.nav-dropdown{
+    position: absolute;
+    right: 20px;
+    top: 80px;
+    background-color:rgb(219, 218, 218);
+    min-height:100px;
+    width:200px;
+    border-radius: 5px;
+}
+
+.nav-dropdown:before{
+    content: " ";
+    border: 10px solid transparent;
+    border-bottom-color: rgb(219, 219, 219);
+    position: absolute;
+    top: -20px;
+    right: 10px;
+}

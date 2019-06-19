@@ -1,0 +1,79 @@
+.notification{
+    position: fixed;
+    top: 10vh;
+    width: 300px;
+    left: calc(50vw - 150px);
+    opacity: 0;
+    visibility: hidden;
+    background-color: #ffffff;
+    transition-property: top, visibility, opacity;
+    transition-duration: 0.5s;
+}
+
+.notification.active{
+    opacity: 1;
+    visibility: visible;
+    top: calc(10vh + 30px);
+}
+
+.notification .header{
+    background-color: rgb(199, 199, 199);
+    color: #000000;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bolder;
+    display: flex;
+    justify-content: space-between;
+}
+
+.notification .header .close{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 5px;
+    cursor: pointer;
+}
+
+
+
+.notification .content{
+    border: 1px solid rgb(199, 199, 199);
+    color: #000000;
+}
+
+.notification.warning .header{
+    background-color: rgb(255, 196, 0);
+    color: #000000;
+}
+
+.notification.info .header{
+    background-color: rgb(0, 174, 255);
+    color: #ffffff;
+}
+
+.notification.danger .header{
+    background-color: rgb(245, 49, 49);
+    color: #ffffff;
+}
+
+.notification.warning .content{
+    border: 1px solid rgb(255, 196, 0);
+}
+
+.notification.info .content{
+    border: 1px solid rgb(0, 174, 255);
+    color: rgb(0, 174, 255);
+}
+
+.notification.danger .content{
+    border: 1px solid rgb(245, 49, 49);
+    color: rgb(245, 49, 49);;
+}
+
+.notification ul{
+    list-style: none;
+}
+

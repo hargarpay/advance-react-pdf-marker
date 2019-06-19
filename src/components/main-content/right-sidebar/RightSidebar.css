@@ -1,0 +1,103 @@
+.right-sidebar{
+    position: fixed;
+    width: 300px;
+    top:0px;
+    right: -295px;
+    height: 100vh;
+    background-color: rgb(0, 153, 255);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 1);
+    transition-property: right;
+    transition-duration: 0.5s;
+}
+
+.right-sidebar.activeParent {
+    right: 0px;
+}
+
+.right-sidebar .inner-right-siderbar{
+    width: 270px;
+    height: calc(100vh - 30px);
+    background-color: #ffffff;
+    margin: 15px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    position: relative;
+}
+
+.right-sidebar .tabs{
+    display: flex;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 50px;
+}
+
+.right-sidebar .tab{
+    background-color: rgb(199, 199, 199);
+    color: #4d4b4b;
+    font-size: 20px;
+    font-weight: bolder;
+    flex: 1;
+    text-align:center;
+    padding: 15px 10px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+}
+.right-sidebar .tab:first-child{
+    border-top-left-radius: 5px;
+}
+
+.right-sidebar .tab:last-child{
+    border-top-right-radius: 5px;
+}
+.right-sidebar .tab.active{
+    background-color: #ffffff;
+    color: rgb(0, 153, 255);
+}
+
+.right-sidebar .drawer{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: calc(50vh - 15px);
+    left: -45px;
+    padding: 15px;
+    background-color: #0099ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #ffffff;
+    color: #ffffff;
+    border-radius: 5px;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    cursor: pointer;
+    transition-property: background-color;
+    transition-duration: 0.5s;
+    -moz-transition-property: background-color;
+    -moz-transition-duration: 0.5s;
+    -webkit-transition-property: background-color;
+    -webkit-transition-duration: 0.5s;
+    -ms-transition-property: background-color;
+    -ms-transition-duration: 0.5s;
+    -o-transition-property: background-color;
+    -o-transition-duration: 0.5s;
+}
+
+.right-sidebar.activeParent .drawer{
+    background-color: rgb(245, 49, 49);
+}
+
+.description{
+    height: calc(100vh - 80px);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-left: 10px;
+    padding-right: 10px;
+}

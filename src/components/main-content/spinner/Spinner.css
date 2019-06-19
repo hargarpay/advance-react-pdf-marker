@@ -1,0 +1,94 @@
+.overlay.active{
+    height: calc(100vh - 80px);
+    width: calc(100vw - 300px);
+    position: fixed;
+    top: 80px;
+    left: 300px;
+    background-color: rgba(209, 207, 207, 0.7);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: visible;
+    opacity: 1;
+    transition-property: visibility opacity;
+    transition-duration: 0.5s;
+}
+
+.overlay.active .loader{
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    border: 5px solid rgb(0, 153, 255);
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    animation-name: loading;
+    animation-duration: .75s;
+    animation-iteration-count: infinite;
+    -webkit-animation-name: loading;
+    -webkit-animation-duration: .75s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-name: loading;
+    -moz-animation-duration: .75s;
+    -moz-animation-iteration-count: infinite;
+    -ms-animation-name: loading;
+    -ms-animation-duration: .75s;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-name: loading;
+    -ms-animation-duration: .75s;
+    -ms-animation-iteration-count: infinite;
+    -o-animation-name: loading;
+    -o-animation-duration: .75s;
+    -o-animation-iteration-count: infinite;
+}
+
+.overlay{
+    visibility: hidden;
+    opacity: 0;
+}
+
+
+
+@keyframes loading{
+    from {
+        transform: rotateZ(0);
+    }
+    to {
+        transform: rotateZ(360deg)
+    }
+}
+@-webkit-keyframes loading {
+    from {
+        -webkit-transform: rotateZ(0);
+    }
+    to {
+        -webkit-transform: rotateZ(360deg)
+    }
+}
+@-moz-keyframes loading{
+    from {
+        -moz-transform: rotateZ(0);
+    }
+    to {
+        -moz-transform: rotateZ(360deg)
+    }
+}
+@-ms-keyframes loading{
+    from {
+        -ms-transform: rotateZ(0);
+    }
+    to {
+        -ms-transform: rotateZ(360deg)
+    }
+}
+@-o-keyframes loading{
+    from {
+        -o-transform: rotateZ(0);
+    }
+    to {
+        -o-transform: rotateZ(360deg)
+    }
+}

@@ -1,0 +1,42 @@
+.header{
+    height: 80px;
+    background-color: rgb(0, 153, 255);
+    color: #ffffff;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    align-content: center;
+}
+
+.menu .users-icon{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    color:rgb(0, 153, 255);
+    background-color: #ffffff;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.menu .users-icon span{
+    font-size: 2em;
+    line-height: 2em;
+}
+
+.dropdown-wrapper{
+    visibility: hidden;
+    opacity: 0;
+    transform: translate(10px,-60px);
+    transition: all 0.5s;
+}
+
+.menu:hover .dropdown-wrapper{
+    visibility: visible;
+    opacity: 1;
+    transform: translate(10px,-65px);
+}
+

@@ -1,0 +1,7 @@
+.main-content{
+    width: calc(100vw - 300px);
+    margin-left: 300px;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
