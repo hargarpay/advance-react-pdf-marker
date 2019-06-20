@@ -1,4 +1,4 @@
-.header{
+.navigation.header{
     height: 80px;
     background-color: rgb(0, 153, 255);
     color: #ffffff;
@@ -11,7 +11,11 @@
     align-content: center;
 }
 
-.menu .users-icon{
+.navigation .menu{
+    cursor: pointer;
+}
+
+.navigation .menu .users-icon{
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -22,19 +26,21 @@
     justify-content: center;
 }
 
-.menu .users-icon span{
+.navigation .menu .users-icon span{
     font-size: 2em;
     line-height: 2em;
 }
 
-.dropdown-wrapper{
+.navigation .dropdown-wrapper{
     visibility: hidden;
     opacity: 0;
     transform: translate(10px,-60px);
     transition: all 0.5s;
+    position: relative;
+    z-index: 40;
 }
 
-.menu:hover .dropdown-wrapper{
+.navigation .menu .dropdown-wrapper.active{
     visibility: visible;
     opacity: 1;
     transform: translate(10px,-65px);

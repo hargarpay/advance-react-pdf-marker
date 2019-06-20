@@ -7,3 +7,12 @@
     top: 0px;
     background-color: rgb(199, 199, 199);
 }
+
+.sidebar .info-message{
+    background-color: white;
+    padding: 6px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #0a73b9;
+    user-select: none;
+}

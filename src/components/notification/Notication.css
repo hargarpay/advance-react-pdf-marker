@@ -59,6 +59,11 @@
     color: #ffffff;
 }
 
+.notification.success .header{
+    background-color: rgb(39, 161, 70);
+    color: #ffffff;
+}
+
 .notification.warning .content{
     border: 1px solid rgb(255, 196, 0);
 }
@@ -71,6 +76,11 @@
 .notification.danger .content{
     border: 1px solid rgb(245, 49, 49);
     color: rgb(245, 49, 49);;
+}
+
+.notification.success .content{
+    border: 1px solid rgb(39, 161, 70);
+    color: rgb(39, 161, 70);;
 }
 
 .notification ul{

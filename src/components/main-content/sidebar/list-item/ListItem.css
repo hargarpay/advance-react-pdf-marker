@@ -1,13 +1,18 @@
 .list-item{
-    margin: 10px;
+    padding: 10px;
     min-height: 100px;
-    background-color: #ffffff;
+    background-color: #fffcca;;
     border: 1px solid rgb(0, 153, 255);
-    color: #ffffff;
+    color: #000000;
     position:relative;
+    cursor: pointer;
 }
 
-.action-buttons{
+.list-item:last-child{
+    margin-bottom: 20px;
+}
+
+.list-item .action-buttons{
     position: absolute;
     bottom: -1px;
     right: -1px;
@@ -17,7 +22,7 @@
     border-left: 1px solid rgb(0, 153, 255);
 }
 
-.btn{
+.list-item .btn{
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
@@ -30,25 +35,45 @@
     cursor: pointer;
 }
 
-.btn-warning{
+.list-item .btn-warning{
     background-color: rgb(255, 196, 0);
     color: #000000;
 }
 
-.btn-info{
+.list-item .btn-info{
     background-color: rgb(0, 174, 255);
     color: #ffffff;
 }
 
-.btn-danger{
+.list-item .btn-danger{
     background-color: rgb(245, 49, 49);
     color: #ffffff;
 }
 
+.list-item .sidebar__highlight blockquote{
+    margin-top: 0.5rem;
+    color: black;
+    font-size: 15px;
+    margin-left: 20px;
+    padding-left: 10px;
+    border-left: 5px solid;
+}
 
-button:hover,
-button:focus,
-button:active{
+.list-item .highlight__location{
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+.list-item .highlight__image img{
+    width: 100%;
+}
+
+
+.list-itembutton:hover,
+.list-itembutton:focus,
+.list-itembutton:active{
     outline: none;
 }
 

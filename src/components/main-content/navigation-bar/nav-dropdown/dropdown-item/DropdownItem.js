@@ -1,22 +1,30 @@
 import React, { Component } from 'react';
-import classes from "./Dropdown-Item.css";
+import AppContext from '../../../../../context/AppContext';
 
+import  "./Dropdown-Item.css";
 class DropdownItem extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
     }
     onHandlerUser = (user) => {
-        console.log(user);
+
+        const { switchUser } = this.context;
+        const {changeActiveUser} = this.props;
+        switchUser(user);
+        changeActiveUser(user)
     } 
 
     render() {
-        const { user } = this.props;
+        const { user, activeClass } = this.props;
 
-        return ( 
-            <div className={classes["dropdown-item"]} onClick={() => this.onHandlerUser(user)}>
+        return (
+            <div
+                className={`dropdown-item ${ activeClass ? "active" : ""}`}
+                onClick={() => this.onHandlerUser(user)}
+            >
                 <img src="https://via.placeholder.com/50" alt="User Pix" />
-                <div className={classes["user-info"]}>
+                <div className={"user-info"}>
                     <h3>{user.name}</h3>
                     <small>{user.email}</small>
                 </div>
@@ -24,5 +32,7 @@ class DropdownItem extends Component {
          )
     }
 }
+
+DropdownItem.contextType = AppContext;
  
 export default DropdownItem;

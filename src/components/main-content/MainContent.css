@@ -1,7 +1,22 @@
 .main-content{
-    width: calc(100vw - 300px);
-    margin-left: 300px;
-    min-height: 100vh;
-    overflow-x: hidden;
-    overflow-y: scroll;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }
+
+.main-content > .submain-content{
+    margin-left: 300px;
+    width: calc(100vw - 300px);
+}
+
+.main-content > .submain-content > .narbar-wrapper{
+    width: 100%;
+    height: 80px;
+}
+
+.main-content > .submain-content > .inner-content-wrapper{
+    height: calc(100vh - 80px);
+    width: 100%;
+    
+}
+

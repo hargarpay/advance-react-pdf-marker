@@ -1,4 +1,4 @@
-.nav-dropdown{
+.navigation .nav-dropdown{
     position: absolute;
     right: 20px;
     top: 80px;
@@ -6,9 +6,10 @@
     min-height:100px;
     width:200px;
     border-radius: 5px;
+    border: 1px solid #0099ff;
 }
 
-.nav-dropdown:before{
+.navigation .nav-dropdown:before{
     content: " ";
     border: 10px solid transparent;
     border-bottom-color: rgb(219, 219, 219);

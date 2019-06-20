@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import classes from "./Book.css";
+import "./Book.css";
 
 class Book extends Component {
     constructor(props) {
@@ -7,8 +7,13 @@ class Book extends Component {
         this.state = {  }
     }
 
-    changeCurrentBook = (bookId) => {
-        console.log(bookId);
+    componentDidMount(){
+        
+    }
+
+    changeCurrentBook = (book) => {
+        const { changeBook } = this.props.onChangeBook;
+        changeBook(book);
     }
 
     shortDescription = (text, len) => {
@@ -17,13 +22,14 @@ class Book extends Component {
     }
 
     render() {
-        const {id, title, description} = this.props.book;
+        const { book } = this.props;
+        const {title, description} = book;
         return ( 
-            <div className={classes.book} onClick={() => this.changeCurrentBook(id)}>
-                <div className={classes["book-icon"]}>
+            <div className="book" onClick={() => this.changeCurrentBook(book)}>
+                <div className="book-icon">
                     <span className="fa fa-book"></span>
                 </div>
-                <div className={classes["book-info"]}>
+                <div className="book-info">
                     <h3>{title}</h3>
                     <small>{this.shortDescription(description, 50)}</small>
                 </div>

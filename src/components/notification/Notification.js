@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import classes from "./Notication.css";
 
+import "./Notication.css";
 class Notification extends Component {
     constructor(props) {
         super(props);
@@ -53,16 +53,16 @@ class Notification extends Component {
         const {heading, messages, type} = this.props;
         const { activate } = this.state;
         return (
-            <div className={`${classes.notification} ${classes[type]} ${activate ? classes.active : null}`} >
-                <div className={classes.header}>
-                    <div className={classes.head}>
+            <div className={`notification  ${type} ${activate ? "active" : null}`} >
+                <div className={"header"}>
+                    <div className={"head"}>
                         {heading}
                     </div>
-                    <div className={classes.close} onClick={this.onDeactivateWithBtn}>
+                    <div className={"close"} onClick={this.onDeactivateWithBtn}>
                         <span className="fa fa-close"></span>
                     </div>
                 </div>
-                <div className={classes.content}>
+                <div className={"content"}>
                     <ul>
                         {
                             Array.isArray(messages)

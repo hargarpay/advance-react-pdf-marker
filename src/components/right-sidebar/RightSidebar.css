@@ -8,6 +8,7 @@
     box-shadow: 0 0 5px rgba(255, 255, 255, 1);
     transition-property: right;
     transition-duration: 0.5s;
+    z-index: 50;
 }
 
 .right-sidebar.activeParent {
@@ -94,10 +95,20 @@
     background-color: rgb(245, 49, 49);
 }
 
-.description{
+.right-sidebar .description{
     height: calc(100vh - 80px);
     overflow-x: hidden;
     overflow-y: scroll;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.right-sidebar .no-book-available {
+    text-align: center;
+    padding: 30px;
+    color: #ca1515;
+}
+
+.right-sidebar .no-book-available span{
+    font-size: 3em;
 }

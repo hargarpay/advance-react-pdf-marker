@@ -1,0 +1,7 @@
+.inner-content{
+    position: relative;
+    overflow-y: "scroll";
+    overflow-x: "hidden";
+    width: calc(100vw - 300px);
+    height: calc(100vh - 80px);
+}

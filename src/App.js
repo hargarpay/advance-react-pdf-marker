@@ -1,12 +1,10 @@
 import React from 'react';
-import Sidebar from './components/sidebar/Sidebar';
-import MainContent from './components/main-content/MainContent';
+import MainContainer from './container/MainContainer';
 
 function App() {
   return (
     <>
-      <Sidebar></Sidebar>
-      <MainContent></MainContent>
+      <MainContainer />
     </>
   );
 }

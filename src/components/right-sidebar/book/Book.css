@@ -1,4 +1,4 @@
-.book{
+.right-sidebar .book{
     display: flex;
     width: calc(100% - 30px);
     min-height: 100px;
@@ -10,27 +10,27 @@
     cursor: pointer;
 }
 
-.book .book-icon{
+.right-sidebar .right-sidebar .book .book-icon{
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.book .book-icon span{
+.right-sidebar .book .book-icon span{
     font-size: 45px;
 }
 
-.book .book-info{
+.right-sidebar .book .book-info{
     flex: 3;
 }
 
 
-.book h3{
+.right-sidebar .book h3{
     margin: 2px 0;
     font-size: 17px;
 }
 
-.book small{
+.right-sidebar .book small{
     font-size: 12px;
 }

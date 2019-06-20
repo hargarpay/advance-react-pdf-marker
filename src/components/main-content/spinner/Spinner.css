@@ -1,9 +1,11 @@
-.overlay.active{
-    height: calc(100vh - 80px);
-    width: calc(100vw - 300px);
-    position: fixed;
-    top: 80px;
-    left: 300px;
+.spinner.overlay.active{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-color: rgba(209, 207, 207, 0.7);
     z-index: 10;
     display: flex;
@@ -15,7 +17,7 @@
     transition-duration: 0.5s;
 }
 
-.overlay.active .loader{
+.spinner.overlay.active .loader{
     width: 100px;
     height: 100px;
     background-color: transparent;
@@ -45,7 +47,7 @@
     -o-animation-iteration-count: infinite;
 }
 
-.overlay{
+.spinner.overlay{
     visibility: hidden;
     opacity: 0;
 }

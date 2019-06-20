@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
-import classes from "./DropDown.css";
 import DropdownItem from './dropdown-item/DropdownItem';
+import "./DropDown.css";
 
 class DropDown extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { 
+            user: "8016d69ac5984ff295c8af1e3b034501"
+         }
+    }
+
+    changeUser = (user) => {
+        this.setState({
+            user: user.id
+        })
     }
     render() {
+
+        // const
         const users = [
             {
                 id: "8016d69ac5984ff295c8af1e3b034501",
@@ -23,9 +33,14 @@ class DropDown extends Component {
             }
         ];
         return ( 
-            <div className={classes["nav-dropdown"]}>
+            <div className={"nav-dropdown"}>
                 {
-                    users.map(user => <DropdownItem key={user.id} user={user}/>)
+                    users.map(user => <DropdownItem
+                        key={user.id}
+                        user={user}
+                        activeClass={user.id === this.state.user}
+                        changeActiveUser={this.changeUser}
+                    />)
                 }
             </div>
          )

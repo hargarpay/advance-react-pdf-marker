@@ -1,21 +1,21 @@
-.form{
+.right-sidebar .form{
     width: calc(100% - 30px);
     margin: 10px;
     padding: 5px;
 }
 
-.field{
+.right-sidebar .field{
     width: 100%;
     margin-bottom: 10px;
 }
 
-.input,
-.textarea{
+.right-sidebar .input,
+.right-sidebar .textarea{
     width: 100%;
 }
 
-input,
-textarea{
+.right-sidebar input,
+.right-sidebar textarea{
     padding: 10px;
     font-size: 12px;
     border-radius: 5px;
@@ -23,21 +23,21 @@ textarea{
     width: 100%;
 }
 
-textarea{
+.right-sidebar textarea{
     resize: none;
     height: 150px;
 }
 
-input:hover,
-input:focus,
-input:active,
-button:hover,
-button:focus,
-button:active{
+.right-sidebar input:hover,
+.right-sidebar input:focus,
+.right-sidebar input:active,
+.right-sidebar button:hover,
+.right-sidebar button:focus,
+.right-sidebar button:active{
     outline: none;
 }
 
-.btn{
+.right-sidebar .btn{
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
@@ -51,25 +51,25 @@ button:active{
     font-size: 15px;
     font-weight: bolder;
 }
-.btn-info{
+.right-sidebar .btn-info{
     background-color: rgb(0, 174, 255);
     color: #ffffff;
 }
 
-.btn-block{
+.right-sidebar .btn-block{
     width: 100%;
 }
 
-.hidden{
+.right-sidebar .hidden{
     display: none;
 }
 
-.disabled{
+.right-sidebar .disabled{
     opacity: 0.7;
     pointer-events: none;
 }
 
-.placeholder{
+.right-sidebar .placeholder{
     padding: 10px;
     background-color: rgb(207, 207, 207);
     color: #000000;
@@ -77,14 +77,14 @@ button:active{
     text-align: center;
 }
 
-.loading-btn{
+.right-sidebar .loading-btn{
     position: relative;
     min-height: 50px;
     transition-property: opacity;
     transition-duration: 0.5s;
 }
 
-.loading-btn .spin{
+.right-sidebar .loading-btn .spin{
     height: 15px;
     width: 15px;
     border-radius: 50%;
@@ -98,12 +98,12 @@ button:active{
     transition-duration: 0.5s;
 }
 
-.loading-btn.running{
+.right-sidebar .loading-btn.running{
     opacity: 0.5;
     pointer-events: none;
     
 }
-.loading-btn.running .spin{
+.right-sidebar .loading-btn.running .spin{
     visibility: visible;
     opacity: 1;
     animation: bounce 0.5s;

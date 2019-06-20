@@ -1,0 +1,2 @@
+export const ADD_PDF_DOCUMENT = "ADD_PDF_DOCUMENT";
+export const GET_PDF_DOCUMENTS = "GET_PDF_DOCUMENTS";

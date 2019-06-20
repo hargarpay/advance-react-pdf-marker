@@ -151,6 +151,7 @@ module.exports = function(webpackEnv) {
       // changing JS code would still trigger a refresh.
     ].filter(Boolean),
     output: {
+      globalObject : 'this',
       // The build folder.
       path: isEnvProduction ? paths.appBuild : undefined,
       // Add /* filename */ comments to generated require()s in the output.
@@ -297,7 +298,7 @@ module.exports = function(webpackEnv) {
       strictExportPresence: true,
       rules: [
         // Disable require.ensure as it's not a standard language feature.
-        { parser: { requireEnsure: false } },
+        { parser: { requireEnsure: true } },
 
         // First, run the linter.
         // It's important to do this before Babel processes the JS.
@@ -402,8 +403,6 @@ module.exports = function(webpackEnv) {
               use: getStyleLoaders({
                 importLoaders: 1,
                 sourceMap: isEnvProduction && shouldUseSourceMap,
-                modules: true,
-                localIdentName: '[name]__[local]__[hash:base64:5]',
               }),
               // Don't consider CSS imports dead code even if the
               // containing package claims to have no side effects.
@@ -418,8 +417,6 @@ module.exports = function(webpackEnv) {
               use: getStyleLoaders({
                 importLoaders: 1,
                 sourceMap: isEnvProduction && shouldUseSourceMap,
-                modules: true,
-                getLocalIdent: getCSSModuleLocalIdent,
               }),
             },
             // Opt-in support for SASS (using .scss or .sass extensions).
