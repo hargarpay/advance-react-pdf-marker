@@ -295,7 +295,7 @@ class UploadBook extends Component {
                         type="button"
                         className={`btn btn-block btn-info 
                          ${dataBase64 === null ? "disabled" : ""} 
-                         loading-btn"]} 
+                         loading-btn
                          ${loading ? "running" : "" }
                         `
                         }

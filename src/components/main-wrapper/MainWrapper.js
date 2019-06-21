@@ -6,6 +6,7 @@ import FileUploadContext from '../../context/FileUploadContext';
 import ViewBookContext from '../../context/ViewBookContext'
 
 import RightSidebar from '../right-sidebar/RightSidebar';
+import AddHighlightContext from '../../context/AddHighlightContext';
 
 class MainWrapper extends Component {
     constructor(props) {
@@ -21,10 +22,33 @@ class MainWrapper extends Component {
                 switchUser: this.onSwitchUser
             },
             viewBook: {
-                book: {},
+                book: {
+                    refId: 'default',
+                    document: 'https://arxiv.org/pdf/1708.08021.pdf',
+                    userId: "8016d69ac5984ff295c8af1e3b034501",
+                    description: "Fast and Precise Type Checking for Javascript",
+                    title: "Default Book",
+                },
                 changeBook: this.onChangeBook
+            },
+            highlightFeedback: {
+                feedback: false,
+                onHandleFeedback: this.onHandleFeedback
             }
+
          }
+
+         this.fileUpload = {
+            pdfDoc: props.pdfDoc,
+            addPDFDoc: this.uploadPDFDoc
+        }
+    }
+
+
+
+    uploadPDFDoc = (payload) => {
+        const { onAddPDFDoc } = this.props;
+        onAddPDFDoc(payload);
     }
 
     onSwitchUser = (user) => {
@@ -35,6 +59,14 @@ class MainWrapper extends Component {
         });
     }
 
+    onHandleFeedback = (feedback) => {
+        const { highlightFeedback } = this.state;
+        const newHighlighFeedback = {...highlightFeedback, ...{feedback}}
+        this.setState({ 
+            highlightFeedback: newHighlighFeedback
+         })
+    }
+
     onChangeBook = (book) => {
         const { viewBook } = this.state;
         const newViewBook = {...viewBook, ...{book}};
@@ -43,12 +75,14 @@ class MainWrapper extends Component {
         });
     }
     render() {
-        const { appContext, viewBook } = this.state;
+        const { appContext, viewBook, highlightFeedback } = this.state;
 
         return ( 
             <AppContext.Provider  value={appContext}>
                 <ViewBookContext.Provider value={viewBook}>
+                <AddHighlightContext.Provider value={highlightFeedback}>
                     <MainContent {...this.props} />
+                </AddHighlightContext.Provider>
                     <FileUploadContext.Provider value={this.fileUpload}>
                         <RightSidebar {...this.props}/>
                     </FileUploadContext.Provider>

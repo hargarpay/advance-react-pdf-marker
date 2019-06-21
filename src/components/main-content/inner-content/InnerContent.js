@@ -3,6 +3,7 @@ import PDFDocument from './pdf-document/PDFDocument';
 
 import "./InnerContent.css";
 import ViewBookContext from '../../../context/ViewBookContext';
+import AppContext from '../../../context/AppContext';
 
 
 class InnerContent extends Component {
@@ -14,15 +15,27 @@ class InnerContent extends Component {
     }
 
     render() { 
-        return ( 
-            <div className="inner-content">
-              <ViewBookContext.Consumer>
-                  {
-                    (currentBook) => <PDFDocument {...this.props} currentBook={currentBook} />
-                  }
-              </ViewBookContext.Consumer>
-              
-            </div>
+        return (
+          <AppContext.Consumer>
+            {
+              (appContext) => (
+                <div className="inner-content">
+                  <ViewBookContext.Consumer>
+                      {
+                        (currentBook) => (
+                              <PDFDocument
+                                {...this.props}
+                                currentBook={currentBook}
+                                appContext={appContext}
+                              />
+                            )
+                      }
+                  </ViewBookContext.Consumer>
+                  
+                </div>
+              )
+            }
+          </AppContext.Consumer>
          );
     }
 }

@@ -7,6 +7,7 @@ import { isEqual } from '../../helper/utility';
 import "./RightSidebar.css";
 import AppContext from '../../context/AppContext';
 import ViewBookContext from '../../context/ViewBookContext';
+import Spinner from '../main-content/spinner/Spinner';
 class RightSidebar extends Component {
 
     constructor(props) {
@@ -14,13 +15,17 @@ class RightSidebar extends Component {
         this.state = { 
             activeTab: "view",
             isOpen: false,
-            books: []
+            books: [],
+            loading: false,
          }
     }
 
     componentDidMount(){
         const { onGetPdfDocs } = this.props;
         onGetPdfDocs();
+        this.setState({
+            loading: true,
+        })
     }
 
     componentWillReceiveProps(prevProps){
@@ -33,6 +38,9 @@ class RightSidebar extends Component {
                     books: newBooks
                 });
             }
+            this.setState({
+                loading: false,
+            })
         }
     }
 
@@ -50,9 +58,15 @@ class RightSidebar extends Component {
     }
 
     render() {
-        const { activeTab, isOpen, books } = this.state;
-
-        const viewBooks = books.length === 0 
+        const { activeTab, isOpen, books, loading } = this.state;
+        const newBooks = [{
+            refId: 'default',
+            document: 'https://arxiv.org/pdf/1708.08021.pdf',
+            userId: "8016d69ac5984ff295c8af1e3b034501",
+            description: "Fast and Precise Type Checking for Javascript",
+            title: "Default Book",
+        }, ...books]
+        const viewBooks = newBooks.length === 0 
         ? (
             <div className="no-book-available">
                 <span className="fa fa-book"></span>
@@ -60,9 +74,13 @@ class RightSidebar extends Component {
             </div>
         )
         : (
+            <>
+            {
+                loading ? <Spinner /> : null
+            }
             <ViewBookContext.Consumer>
                 {
-                   (changeBook) => books.map(book => (
+                   (changeBook) => newBooks.map(book => (
                    <Book
                         book={book}
                         onChangeBook={changeBook}
@@ -70,6 +88,7 @@ class RightSidebar extends Component {
                     />))
                 }
             </ViewBookContext.Consumer>
+            </>
         )
 
 

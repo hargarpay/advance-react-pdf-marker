@@ -15,6 +15,7 @@ import Spinner from '../../spinner/Spinner';
 
 import testHighlights from "./test-highlighter";
 import { isEqual, isEmpty } from '../../../../helper/utility';
+import AddHighlightContext from '../../../../context/AddHighlightContext';
 
 
 const getNextId = () => `${uuidv4()}`.replace(/-/g, "");
@@ -46,7 +47,9 @@ class PDFDocument extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            highlights: testHighlights[url] ? [...testHighlights[url]] : [],
+            highlights: testHighlights[url] ? testHighlights[url].map(
+                hightlight => hightlight.annotation
+            ) : [],
             bookData: null,
             reload: false,
          }
@@ -61,21 +64,58 @@ class PDFDocument extends Component {
     scrollViewerTo = (highlight) => {};
 
     componentWillReceiveProps(nextProps){
-        const {currentBook} = this.props;
+        const {currentBook, annotations, annotation} = this.props;
 
         if(!isEqual(currentBook, nextProps.currentBook)){
-            const { book } = nextProps.currentBook;
+            const {book} = nextProps.currentBook
             this.setState({
-                bookData: book.document,
                 reload: true,
-                highlights: []
             });
 
-            window.setTimeout(() => {
+            if(book.refId === 'default'){
+                window.setTimeout(() => {
+                    this.setState({
+                        bookData: url,
+                        reload: false,
+                        highlights: testHighlights[url]
+                    });
+                }, 2000)
+            }
+        }
+
+        if(!isEqual(nextProps.annotation, annotation)){
+            const { status } = nextProps.annotation;
+            if(status){
+                const { payload } = nextProps.annotation
+                const {highlights} = this.state;
+                const highlight = JSON.parse(payload.annotation);
+
                 this.setState({
-                    reload: false
+                    highlights: [highlight, ...highlights]
                 });
-            }, 2000)
+            }
+        }
+        
+        if(!isEqual(nextProps.annotations, annotations)){
+            const { book } = this.props.currentBook;
+            const { status } = nextProps.annotations;
+            if(status){
+                const { payload } = nextProps.annotations
+                const annotations = payload.length === 0 ? [] 
+                : payload.map(annot => {
+                    const jsonAnn = JSON.parse(annot.annotation);
+                    return jsonAnn
+                })
+                this.setState({
+                    bookData: book.document,
+                    reload: false,
+                    highlights: annotations
+                });
+            }else{
+                this.setState({
+                    reload: false,
+                })
+            }
         }
     }
 
@@ -101,13 +141,22 @@ class PDFDocument extends Component {
     }
 
     addHighlight(highlight) {
-        const { highlights } = this.state;
-    
-        console.log("Saving highlight", highlight);
+        // const { highlights } = this.state;
+        const { appContext, currentBook, onAddAnnotation } = this.props;
+        const documentId = currentBook.book.refId;
+        const annotationId = getNextId();
+        const userId = appContext.user.id;
+        const annotation = JSON.stringify({...highlight, id: annotationId});
+        const payload = {annotationId, annotation, userId, documentId};
 
-        this.setState({
-            highlights: [{ ...highlight, id: getNextId() }, ...highlights]
-        });
+        if(documentId !== 'default'){
+            const { onHandleFeedback } = this.context;
+            onHandleFeedback(true);
+            onAddAnnotation(payload);
+        }
+        // this.setState({
+        //     highlights: [{ ...highlight, id: getNextId() }, ...highlights]
+        // });
     }
 
     updateHighlight(highlightId, position, content) {
@@ -219,5 +268,7 @@ class PDFDocument extends Component {
          );
     }
   }
+
+  PDFDocument.contextType = AddHighlightContext;
    
   export default PDFDocument;

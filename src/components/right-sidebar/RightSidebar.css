@@ -101,6 +101,7 @@
     overflow-y: scroll;
     padding-left: 10px;
     padding-right: 10px;
+    position: relative;
 }
 
 .right-sidebar .no-book-available {

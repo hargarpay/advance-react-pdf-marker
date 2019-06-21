@@ -16,3 +16,50 @@
     color: #0a73b9;
     user-select: none;
 }
+
+.sidebar .loader{
+    position: relative;
+    min-height: 50px;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+}
+
+.sidebar .loader .spin{
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: #0099ff;;
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    visibility: hidden;
+    opacity: 0;
+    transition-property: visibility opacity;
+    transition-duration: 0.5s;
+}
+
+.sidebar .loader.running{
+    opacity: 0.5;
+    pointer-events: none;
+    
+}
+.sidebar .loader.running .spin{
+    visibility: visible;
+    opacity: 1;
+    animation: bounce 0.5s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+@keyframes bounce {
+    from {
+        top: 2px;
+        width: 10px;
+        height: 15px;
+    }
+    to {
+        top: calc(100% - 17px);
+        height: 10px;
+        width: 15px;
+    }
+}
