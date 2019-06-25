@@ -59,28 +59,22 @@ class RightSidebar extends Component {
 
     render() {
         const { activeTab, isOpen, books, loading } = this.state;
-        const newBooks = [{
-            refId: 'default',
-            document: 'https://arxiv.org/pdf/1708.08021.pdf',
-            userId: "8016d69ac5984ff295c8af1e3b034501",
-            description: "Fast and Precise Type Checking for Javascript",
-            title: "Default Book",
-        }, ...books]
-        const viewBooks = newBooks.length === 0 
+        const viewBooks = books.length === 0 
         ? (
-            <div className="no-book-available">
-                <span className="fa fa-book"></span>
-                <p> No Book has been uploaded yet, click on the <strong>ADD</strong> tab to upload book</p>
-            </div>
-        )
-        : (
             <>
             {
                 loading ? <Spinner /> : null
             }
+            <div className="no-book-available">
+                <span className="fa fa-book"></span>
+                <p> No Book has been uploaded yet, click on the <strong>ADD</strong> tab to upload book</p>
+            </div>
+            </>
+        )
+        : (
             <ViewBookContext.Consumer>
                 {
-                   (changeBook) => newBooks.map(book => (
+                   (changeBook) => books.map(book => (
                    <Book
                         book={book}
                         onChangeBook={changeBook}
@@ -88,7 +82,6 @@ class RightSidebar extends Component {
                     />))
                 }
             </ViewBookContext.Consumer>
-            </>
         )
 
 

@@ -22,17 +22,14 @@ class MainWrapper extends Component {
                 switchUser: this.onSwitchUser
             },
             viewBook: {
-                book: {
-                    refId: 'default',
-                    document: 'https://arxiv.org/pdf/1708.08021.pdf',
-                    userId: "8016d69ac5984ff295c8af1e3b034501",
-                    description: "Fast and Precise Type Checking for Javascript",
-                    title: "Default Book",
-                },
+                book: null,
                 changeBook: this.onChangeBook
             },
             highlightFeedback: {
-                feedback: false,
+                feedback: {
+                    status: false,
+                    id: null
+                },
                 onHandleFeedback: this.onHandleFeedback
             }
 

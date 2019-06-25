@@ -13,17 +13,14 @@ export default class MainContent extends Component{
         this.props = props;
         this.state = { }
     }
-
     
-
-
-
     render(){
         return (
             <div className={"main-content"}>
                 <ViewBookContext.Consumer>
                     {
-                        (currentBook) => (
+                        (currentBook) => {
+                            return (
                             <AddHighlightContext.Consumer>
                                 {
                                     highlightFeedback => (
@@ -36,6 +33,7 @@ export default class MainContent extends Component{
                                 }
                             </AddHighlightContext.Consumer>
                         )
+                            }
                     }
                 </ViewBookContext.Consumer>
                 <div className="submain-content">

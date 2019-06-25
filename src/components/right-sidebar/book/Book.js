@@ -7,13 +7,8 @@ class Book extends Component {
         this.state = {  }
     }
 
-    componentDidMount(){
-        
-    }
-
     changeCurrentBook = (book) => {
         const { changeBook } = this.props.onChangeBook;
-        console.log(book);
         changeBook(book);
     }
 

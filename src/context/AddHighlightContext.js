@@ -2,6 +2,9 @@ import  { createContext } from 'react';
 
 
 export default createContext({
-    feedback: false,
+    feedback: {
+        status: false,
+        id: null
+    },
     onHandleFeedback: () => {},
 });

@@ -141,3 +141,7 @@ function compare(item1, item2) {
     }
     return true;
 }
+
+export function isObject(obj){
+    return Object.prototype.toString.call(obj) === '[object Object]'
+}

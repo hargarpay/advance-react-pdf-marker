@@ -30,6 +30,9 @@ export default class NavigationBar extends Component{
                     <div className={"users-icon"}>
                         <span className="fa fa-users"></span>
                     </div>
+                    <div className="switch-info">
+                        <p className="write-up"> Switch User</p>
+                    </div>
                     <div className={`dropdown-wrapper ${activeDropdown ? "active": ""}`}>
                         <DropDown />
                     </div>

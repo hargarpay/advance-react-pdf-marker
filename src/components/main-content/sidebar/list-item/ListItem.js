@@ -18,6 +18,16 @@ export default class ListItem extends Component{
       }
     }
 
+    deleteHightlight = (highlight) => {
+      const { onDeleteAnnotation, highlightFeedback } = this.props;
+      const {annotation_id} = highlight;
+      const { onHandleFeedback } = highlightFeedback;
+
+      onDeleteAnnotation({annotationId: annotation_id});
+      onHandleFeedback({status: true, id: annotation_id});
+
+    }
+
     updateHash = highlight => {
         window.location.hash = `highlight-${highlight.annotation.id}`;
     };
@@ -30,6 +40,7 @@ export default class ListItem extends Component{
         const { highlight } = this.props;
         const { user } = this.state;
         const {annotation} = highlight;
+
         return (
             <div className={"list-item"}>
               <div
@@ -59,8 +70,8 @@ export default class ListItem extends Component{
                   </div>
               </div>
               {
-                this.showActionBtns(user, highlight.userId) ? (
-                  <div className={"action-buttons"}>
+                this.showActionBtns(user, highlight.user_id) ? (
+                  <div className={"action-buttons"} onClick={() => this.deleteHightlight(highlight)}>
                       <button className={"bun btn-danger"}>
                           <span className="fa fa-trash"></span>
                       </button>

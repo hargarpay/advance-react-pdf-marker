@@ -4,18 +4,15 @@ import ListItem from "./list-item/ListItem";
 import  "./Sidebar.css";
 import { isEqual } from "../../../helper/utility";
 
-import testHighlights from "../inner-content/pdf-document/test-highlighter"
 import Spinner from "../spinner/Spinner";
 import AppContext from "../../../context/AppContext";
-
-const url = "https://arxiv.org/pdf/1708.08021.pdf"
 
 export default class Sidebar extends Component{
     constructor(props){
         super();
         this.props = props;
         this.state = {
-            bookHighlights: testHighlights[url] || [],
+            bookHighlights: [],
             reload: false,
             highlightFeeds: false
         }
@@ -27,24 +24,15 @@ export default class Sidebar extends Component{
             annotations,
             annotation,
             highlightFeedback,
+            deleteAnnotation
         } = this.props
         if(!isEqual(nextProps.currentBook, currentBook)){
             const { refId } = nextProps.currentBook.book;
             this.setState({
                 reload: true,
             })
-            if(refId === 'default'){
-                window.setTimeout(() => {
-                    this.setState({
-                        bookHighlights: testHighlights[url] ,
-                        reload: false,
-                    });
-                }, 2000)
-            }else{
                 const { onGetAnnotations } = this.props
                 onGetAnnotations(refId);
-
-            }
         }
 
         if(!isEqual(nextProps.annotation, annotation)){
@@ -55,7 +43,6 @@ export default class Sidebar extends Component{
                 const jsonAnn = JSON.parse(payload.annotation);
 
                 const highlight = {...payload, ...{annotation: jsonAnn}};
-
                 this.setState({
                     bookHighlights: [highlight, ...bookHighlights],
                     highlightFeeds: false
@@ -63,7 +50,9 @@ export default class Sidebar extends Component{
             }
         }
 
-        if(!isEqual(nextProps.annotations, annotations)){
+        if(
+            !isEqual(nextProps.annotations, annotations)
+        ){
             // const { book } = this.props.currentBook;
             const { status } = nextProps.annotations;
             if(status){
@@ -71,7 +60,6 @@ export default class Sidebar extends Component{
                 const annotations = payload.length === 0 ? [] 
                 : payload.map(annot => {
                     const jsonAnn = JSON.parse(annot.annotation);
-
                     return {...annot, ...{annotation: jsonAnn}}
                 })
                 this.setState({
@@ -88,13 +76,42 @@ export default class Sidebar extends Component{
         if(!isEqual(nextProps.highlightFeedback, highlightFeedback)){
             const { feedback } = nextProps.highlightFeedback;
             this.setState({
-                highlightFeeds: feedback
+                highlightFeeds: feedback.status
             })
+        }
+
+        if(!isEqual(nextProps.deleteAnnotation, deleteAnnotation)){
+            const { status, payload } = nextProps.deleteAnnotation;
+            if(status){
+                const { bookHighlights } = this.state;
+                const newbookHighlights = bookHighlights
+                .filter(item => item.annotation_id !== payload.annotation_id);
+
+                this.setState({
+                    bookHighlights: newbookHighlights,
+                    highlightFeeds: false
+                });
+            }else{
+                this.setState({
+                    highlightFeeds: false,
+                });
+            }
         }
     }
 
     render(){
         const { bookHighlights, reload, highlightFeeds } = this.state;
+        const { currentBook } = this.props;
+
+        const viewSidbar = currentBook.book !== null 
+        ? (<AppContext.Consumer>
+            {
+                appContext => (
+                    bookHighlights.map(item => <ListItem key={item.annotation_id} appContext={appContext} highlight={item} {...this.props}/>)
+                )
+            }
+        </AppContext.Consumer>)
+        : null;
         
         return (
             <div className="sidebar">
@@ -109,15 +126,7 @@ export default class Sidebar extends Component{
                 </div>
                 {
                   !reload ?
-                    (
-                        <AppContext.Consumer>
-                            {
-                                appContext => (
-                                    bookHighlights.map(item => <ListItem key={item.annotation_id} appContext={appContext} highlight={item} />)
-                                )
-                            }
-                        </AppContext.Consumer>
-                    )
+                    viewSidbar
                     : <Spinner />
                 }
             </div>

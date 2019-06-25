@@ -13,6 +13,7 @@
 
 .navigation .menu{
     cursor: pointer;
+    position: relative;
 }
 
 .navigation .menu .users-icon{
@@ -44,5 +45,31 @@
     visibility: visible;
     opacity: 1;
     transform: translate(10px,-65px);
+}
+
+.navigation .switch-info{
+    position: absolute;
+    background-color: #ffffff;
+    color: rgb(0, 153, 255);
+    top: 15px;
+    left: -105px;
+    padding: 5px;
+    border-radius: 5px;
+
+}
+
+.navigation .switch-info:after{
+    content: " ";
+    position: absolute;
+    border: 8px solid transparent;
+    border-left-color: white;
+    right: -16px;
+    top: 6px;
+
+}
+.navigation .switch-info p{
+    margin: 0;
+    font-size: 15px;
+    font-weight: bolder;
 }
 
