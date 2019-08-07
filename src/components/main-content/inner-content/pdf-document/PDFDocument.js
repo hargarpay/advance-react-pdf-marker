@@ -26,10 +26,6 @@ const resetHash = () => {
   window.location.hash = "";
 };
 
-
-
-
-
 const HighlightPopup = ({ comment }) =>
   comment.text ? (
     <div className="Highlight__popup">
@@ -140,6 +136,7 @@ class PDFDocument extends Component {
             this.scrollToHighlightFromHash,
             false
         );
+        
     }
 
     getHighlightById(id) {
@@ -157,6 +154,7 @@ class PDFDocument extends Component {
         const annotation = JSON.stringify({...highlight, id: annotationId });
         const payload = {annotationId, annotation, userId, documentId};
         const { onHandleFeedback } = this.context;
+
         onAddAnnotation(payload);
         onHandleFeedback({status: true, id: annotationId});
     }
@@ -207,7 +205,6 @@ class PDFDocument extends Component {
                     onOpen={transformSelection}
                     onConfirm={comment => {
                         this.addHighlight({ content, position, comment });
-
                         hideTipAndSelection();
                     }}
                 />

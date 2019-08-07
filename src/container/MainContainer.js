@@ -9,10 +9,23 @@ class MainContainer extends Component {
         super(props);
         this.state = {  }
     }
+
+    componentDidMount(){
+        window.addEventListener("message", function(event){
+            this.console.log(event);
+        }, false);
+
+    }
+
+    // Called sometime after postMessage is called
+    receiveMessage(event)
+    {
+        console.log(event);
+    }
     render() {
         return (
             <MainWrapper {...this.props} />
-         )
+            )
     }
 }
 

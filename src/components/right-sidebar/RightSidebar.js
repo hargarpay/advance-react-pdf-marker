@@ -25,7 +25,8 @@ class RightSidebar extends Component {
         onGetPdfDocs();
         this.setState({
             loading: true,
-        })
+        });
+        
     }
 
     componentWillReceiveProps(prevProps){

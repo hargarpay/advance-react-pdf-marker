@@ -6,6 +6,8 @@
     position: fixed;
     top: 0px;
     background-color: rgb(199, 199, 199);
+    left: 0px;
+    transition: all 0.5s;
 }
 
 .sidebar .info-message{
@@ -49,6 +51,16 @@
     animation: bounce 0.5s;
     animation-direction: alternate;
     animation-iteration-count: infinite;
+}
+
+@media (max-width: 768px){
+    /* .sidebar{
+        left: -300px;
+    }
+
+    .sidebar.active{
+
+    }     */
 }
 
 @keyframes bounce {
